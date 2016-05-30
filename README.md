@@ -1,4 +1,4 @@
-# Scope child theme project
+# Scoop child theme project for parent theme Pojo Scoop
 
 ------
 

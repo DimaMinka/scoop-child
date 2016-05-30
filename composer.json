@@ -1,0 +1,91 @@
+{
+  "name": "Scoop-child",
+  "description": "",
+  "authors": [
+    {
+      "name": "DimaMinka",
+      "email": "cdk@cdk.co.il"
+    }
+  ],
+  "license": "",
+  "require": {
+    "wordpress": "4.5.2",
+    "wpackagist-plugin/limit-login-attempts": "1.*",
+    "wpackagist-plugin/akismet": "3.*",
+    "wpackagist-plugin/contact-form-7": "4.*",
+    "wpackagist-plugin/wordpress-seo": "3.*",
+    "themes/scoop": "2.5.2"
+
+  },
+  "require-dev": {
+    "wpackagist-plugin/developer": "*",
+    "wpackagist-plugin/debug-bar": "*",
+    "wpackagist-plugin/debug-bar-console": "*",
+    "wpackagist-plugin/debug-bar-cron": "*",
+    "wpackagist-plugin/debug-bar-extender": "*",
+    "wpackagist-plugin/log-deprecated-notices": "*",
+    "wpackagist-plugin/regenerate-thumbnails": "*",
+    "wpackagist-plugin/rewrite-rules-inspector": "*",
+    "wpackagist-plugin/theme-check": "*"
+  },
+  "repositories":[
+    {
+      "type":"composer",
+      "url":"https://wpackagist.org"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wordpress",
+        "type": "webroot",
+        "version": "4.5.2",
+        "dist": {
+          "url": "https://wordpress.org/wordpress-4.5.2.zip",
+          "type": "zip"
+        },
+        "source": {
+          "url" : "https://github.com/WordPress/WordPress",
+          "type": "git",
+          "reference": "4.5.2"
+        },
+        "require": {
+          "fancyguy/webroot-installer": "1.0.0"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "themes/scoop",
+        "type": "wordpress-theme",
+        "version": "2.5.2",
+        "dist": {
+          "type": "zip",
+          "url": "https://www.dropbox.com/s/swrh8ej1fjdcnr1/scoop-2.5.2.zip?dl=1"
+        },
+        "require" : {
+          "composer/installers": "~1.0"
+        }
+      }
+    }
+  ],
+  "scripts": {
+    "post-install-cmd": [
+      "rsync -a wordpress/ wp/ && rm -rf wordpress",
+      "cd wp/wp-content/themes/scoop-child/ && npm i && npm run build"
+    ],
+    "post-update-cmd": [
+      "rsync -a wordpress/ wp/ && rm -rf wordpress",
+      "cd wp/wp-content/themes/scoop-child/ && npm i && npm run build"
+    ]
+  },
+  "extra": {
+    "installer-paths": {
+      "wp/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "wp/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+      "wp/wp-content/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "webroot-dir": "wordpress",
+    "webroot-package": "wordpress"
+  }
+}

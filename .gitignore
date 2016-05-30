@@ -108,7 +108,7 @@ Rails
 /wp/wp-content/themes/*
 !/wp/wp-content/plugins/index.php
 !/wp/wp-content/themes/index.php
-!/wp/wp-content/themes/med
+!/wp/wp-content/themes/scoop-child
 
 # Ignore files containing sensitive information.
 ##########
@@ -124,10 +124,4 @@ Rails
 
 # Theme files
 ##########
-/wp/wp-content/themes/med/assets/js/vendors.js
-/wp/wp-content/themes/med/assets/js/custom.js
-/wp/wp-content/themes/med/assets/js/custom.min.js
-/wp/wp-content/themes/med/*.min.css
-/wp/wp-content/themes/med/*.css.map
-/wp/wp-content/themes/med/*.css
-/wp/wp-content/themes/med/assets/js/vendors.min.js
+/wp/wp-content/themes/scoop-child/dist/
